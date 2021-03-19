@@ -51,6 +51,26 @@ const findInvalidCards = (myArr) => {
 	return InvalidArr
 }
 
+const idInvalidCardCompanies = (invalidArr) => {
+	const companiesName = {
+		3: 'Amex',
+		4: 'Visa',
+		5: 'MasterCard',
+		6: 'Discover',
+	}
+	const companiesArr = []
+	const companyObj = {}
+	invalidArr.forEach((invCard) => {
+		if (companiesName[invCard[0]] in companyObj) {
+			companyObj[companiesName[invCard[0]]].push(invCard)
+		} else {
+			companyObj[companiesName[invCard[0]]] = [invCard]
+		}
+	})
+	return companyObj
+}
+
 const invalCard = findInvalidCards(batch)
-console.log(invalCard.length)
-console.log(invalCard)
+const invalCompany = idInvalidCardCompanies(invalCard)
+
+console.log(invalCompany)
