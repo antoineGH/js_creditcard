@@ -1,3 +1,8 @@
+// --- DECLARATIONS ---
+
+// Credit card as string
+creditCardString = '4539677908016808'
+
 // All valid credit card numbers
 const valid1 = [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8]
 const valid2 = [5, 5, 3, 5, 7, 6, 6, 7, 6, 8, 7, 5, 1, 4, 3, 9]
@@ -22,7 +27,7 @@ const mystery5 = [4, 9, 1, 3, 5, 4, 0, 4, 6, 3, 0, 7, 2, 5, 2, 3]
 // An array of all the arrays above
 const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1, mystery2, mystery3, mystery4, mystery5]
 
-// Add your functions below:
+// --- FUNCTIONS ---
 
 const validateCard = (myArr) => {
 	const validArr = myArr.slice()
@@ -70,7 +75,22 @@ const idInvalidCardCompanies = (invalidArr) => {
 	return companyObj
 }
 
-const invalCard = findInvalidCards(batch)
-const invalCompany = idInvalidCardCompanies(invalCard)
+const cardToArr = (stringCard) => {
+	const arrCard = []
+	for (let i = 0; i < stringCard.length; i++) {
+		arrCard.push(stringCard[i])
+	}
+	return arrCard
+}
 
+// --- CALLS ---
+
+// Convert string card to array card
+console.log(cardToArr(creditCardString))
+
+// Check all batch array for invalid cards
+const invalCard = findInvalidCards(batch)
+
+// Create JSON to store invalid cards value, with company name as key
+const invalCompany = idInvalidCardCompanies(invalCard)
 console.log(invalCompany)
